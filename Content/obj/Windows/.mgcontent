@@ -4,8 +4,15 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>f:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/Chopper.fbx</File>
-    <File>f:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/canyon.png</File>
-    <File>f:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/grass.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/Chopper.fbx</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/canyon.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/grass.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/verticalroad.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/LBCornerroad.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/LTCornerroad.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/RBCornerroad.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/RTCornerroad.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/horizontalroad.png</File>
+    <File>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/grasstile.png</File>
   </SourceFiles>
 </SourceFileCollection>

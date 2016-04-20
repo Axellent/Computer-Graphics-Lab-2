@@ -25,10 +25,12 @@ namespace NAJ_Lab2
             ModelComponent chopModel = ComponentManager.Instance.GetEntityComponent<ModelComponent>(chopper);
 
             Entity terrain = ComponentManager.Instance.GetEntityWithTag("Terrain", sceneEntities);
-            TerrainComponent tcomp = ComponentManager.Instance.GetEntityComponent<TerrainComponent>(terrain);
-
+            TerrainMapComponent tcomp = ComponentManager.Instance.GetEntityComponent<TerrainMapComponent>(terrain);
+           
             engine.SetWindowTitle("Chopper x:" + t.position.X + "Chopper y:" + t.position.Y + "Chopper z:" +t.position.Z + "Map height:" + tcomp.GetTerrainHeight(t.position.X, Math.Abs(t.position.Z)));
-            t.position = new Vector3(t.position.X, 0.2f+tcomp.GetTerrainHeight(t.position.X, Math.Abs(t.position.Z)), t.position.Z);
+
+            //lås modellen till heightmap höjd
+            t.position = new Vector3(t.position.X, 1.7f+tcomp.GetTerrainHeight(t.position.X, Math.Abs(t.position.Z)), t.position.Z);
 
             //set the mesh transforms to zero
             chopModel.SetMeshTransform(1, Matrix.CreateRotationY(0.0f));
@@ -45,13 +47,13 @@ namespace NAJ_Lab2
 
                     if (Utilities.CheckKeyboardAction("right", BUTTON_STATE.HELD, k))
                     {
-                        newRot = new Vector3(-0.4f, 0f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        newRot = new Vector3(-2.8f, 0f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         t.vRotation = newRot;
                         moving = true;
                     }
                     else if (Utilities.CheckKeyboardAction("left", BUTTON_STATE.HELD, k))
                     {
-                        newRot = new Vector3(0.4f, 0f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds; 
+                        newRot = new Vector3(2.8f, 0f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds; 
                         t.vRotation = newRot;
                         moving = true;
                     }
@@ -62,22 +64,22 @@ namespace NAJ_Lab2
 
                     if (Utilities.CheckKeyboardAction("up", BUTTON_STATE.HELD, k))
                     {
-                        t.position += new Vector3(0f, 4f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        t.position += new Vector3(0f, 70f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         moving = true;
                     }
                     if (Utilities.CheckKeyboardAction("down", BUTTON_STATE.HELD, k))
                     {
-                        t.position += new Vector3(0f, -4f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        t.position += new Vector3(0f, -70f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         moving = true;
                     }
                     if (Utilities.CheckKeyboardAction("forward", BUTTON_STATE.HELD, k))
                     {
-                        t.position += t.forward * 6f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        t.position += t.forward * 100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         moving = true;
                     }
                     if (Utilities.CheckKeyboardAction("back", BUTTON_STATE.HELD, k))
                     {
-                        t.position += t.forward * -6f * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                        t.position += t.forward * -100f * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         moving = true;
                     }
 

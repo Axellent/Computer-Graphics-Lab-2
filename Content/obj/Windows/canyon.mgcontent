@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>f:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/canyon.png</SourceFile>
+  <SourceFile>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/canyon.png</SourceFile>
   <SourceTime>2016-03-09T17:25:10.387+01:00</SourceTime>
-  <DestFile>f:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/bin/Windows/canyon.xnb</DestFile>
-  <DestTime>2016-04-14T14:15:28.1127702+02:00</DestTime>
+  <DestFile>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/bin/Windows/canyon.xnb</DestFile>
+  <DestTime>2016-04-18T12:58:46.5284191+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

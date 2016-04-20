@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/grass.png</SourceFile>
-  <SourceTime>2016-04-14T10:35:08.7196642+02:00</SourceTime>
-  <DestFile>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/bin/Windows/grass.xnb</DestFile>
-  <DestTime>2016-04-19T14:39:49.8139879+02:00</DestTime>
+  <SourceFile>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/RBCornerroad.png</SourceFile>
+  <SourceTime>2016-04-19T14:39:02.9963101+02:00</SourceTime>
+  <DestFile>F:/systemarkitektprogrammet/år3/DatorGrafik/Lab2/Content/bin/Windows/RBCornerroad.xnb</DestFile>
+  <DestTime>2016-04-19T14:39:49.8269886+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
