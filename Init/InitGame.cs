@@ -35,6 +35,7 @@ namespace NAJ_Lab2.Init
             k.AddKeyToAction("right", Keys.Right);
             k.AddKeyToAction("down", Keys.Z);
             k.AddKeyToAction("up", Keys.A);
+            k.AddKeyToAction("quit", Keys.Escape);
 
             Entity chopper = EntityFactory.Instance.NewEntityWithTag("Chopper");
             ModelComponent cm = new ModelComponent(engine.LoadContent<Model>("Chopper"), true);
@@ -44,21 +45,20 @@ namespace NAJ_Lab2.Init
             TransformComponent chopperTransform = new TransformComponent();
             chopperTransform.position = new Vector3(0.0f, 0.0f, 0.0f);
             chopperTransform.vRotation = new Vector3(0,0,0);
-            chopperTransform.scale = new Vector3(1.5f, 1.5f, 1.5f);
+            chopperTransform.scale = new Vector3(2.5f, 2.5f, 2.5f);
             ComponentManager.Instance.AddComponentToEntity(chopper, chopperTransform);
 
             Entity Camera = EntityFactory.Instance.NewEntityWithTag("3DCamera");
             CameraComponent cc = new CameraComponent(engine.GetGraphicsDeviceManager());
             cc.position = new Vector3(0, 20, 60);
             
-            //Use this line instead to see the back rotor rotate at a different speed! :)
+            //Use this line instead to see the back rotor rotate, hard to see from behind :)
             //cc.SetChaseCameraPosition(new Vector3(10f, 20f, 40f));
             cc.SetChaseCameraPosition(new Vector3(0f, 30f, 70f));
                         
             ComponentManager.Instance.AddComponentToEntity(Camera, cc);
             ComponentManager.Instance.AddComponentToEntity(Camera, new TransformComponent());
             cc.SetTargetEntity("Chopper");
-            cc.SetFarClipPlane(4000);
 
             Entity Terrain = EntityFactory.Instance.NewEntityWithTag("Terrain");
             TerrainMapComponent t = new TerrainMapComponent(engine.GetGraphicsDevice(), engine.LoadContent<Texture2D>("Canyon"), engine.LoadContent<Texture2D>("grasstile"),10);

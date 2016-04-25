@@ -67,6 +67,11 @@ namespace NAJ_Lab2
                         t.position += new Vector3(0f, 70f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
                         moving = true;
                     }
+
+                    if (Utilities.CheckKeyboardAction("quit", BUTTON_STATE.RELEASED, k))
+                    {
+                        System.Environment.Exit(0);
+                    }
                     if (Utilities.CheckKeyboardAction("down", BUTTON_STATE.HELD, k))
                     {
                         t.position += new Vector3(0f, -70f, 0f) * (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -85,8 +90,8 @@ namespace NAJ_Lab2
 
                     if(moving == true)
                     {
-                        chopModel.SetMeshTransform(1, Matrix.CreateRotationY(0.02f));
-                        chopModel.SetMeshTransform(3, Matrix.CreateRotationY(0.05f));
+                        chopModel.SetMeshTransform(1, Matrix.CreateRotationY(0.08f));
+                        chopModel.SetMeshTransform(3, Matrix.CreateRotationY(0.1f));
                     }
                 }
             }
