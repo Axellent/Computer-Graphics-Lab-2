@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using GameEngine;
 
-namespace GoblinKart.Init
+namespace NAJ_Lab2.Init
 {
     class InitHouses
     {
