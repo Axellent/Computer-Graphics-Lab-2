@@ -5,64 +5,92 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 using GameEngine;
 using Microsoft.Xna.Framework.Input;
 
-namespace NAJ_Lab2.Init
-{
-    class InitGame
-    {
+namespace NAJ_Lab2 {
+    class InitGame {
         private SystemManager sm = SystemManager.Instance;
 
-        public InitGame(ECSEngine engine)
-        {
-
+        public InitGame(ECSEngine engine) {
             sm.RegisterSystem("Game", new TransformSystem());
             sm.RegisterSystem("Game", new ModelRenderSystem());
-            sm.RegisterSystem("Game", new TerrainMapRenderSystem());
+
+            InitKeyboard();
+            InitChopper(engine);
+            InitCamera(engine);
+            InitTerrain(engine);
+
+            SceneManager.Instance.SetActiveScene("Game");
+            SystemManager.Instance.Category = "Game";
+        }
+
+        private void InitKeyboard() {
             sm.RegisterSystem("Game", new KeyBoardSystem());
-            sm.RegisterSystem("Game", new CameraSystem());
-            sm.RegisterSystem("Game", new ChopperControlSystem(engine));
 
             Entity keyboardControl = EntityFactory.Instance.NewEntityWithTag("keyboard");
             ComponentManager.Instance.AddComponentToEntity(keyboardControl, new KeyBoardComponent());
             KeyBoardComponent k = ComponentManager.Instance.GetEntityComponent<KeyBoardComponent>(keyboardControl);
 
-            k.AddKeyToAction("forward", Keys.Up);
-            k.AddKeyToAction("back", Keys.Down);
-            k.AddKeyToAction("left", Keys.Left);
-            k.AddKeyToAction("right", Keys.Right);
-            k.AddKeyToAction("down", Keys.Z);
-            k.AddKeyToAction("up", Keys.A);
-            k.AddKeyToAction("quit", Keys.Escape);
+            KeyBoardSystem.AddKeyToAction(ref k, "forward", Keys.Up);
+            KeyBoardSystem.AddKeyToAction(ref k, "back", Keys.Down);
+            KeyBoardSystem.AddKeyToAction(ref k, "left", Keys.Left);
+            KeyBoardSystem.AddKeyToAction(ref k, "right", Keys.Right);
+            KeyBoardSystem.AddKeyToAction(ref k, "down", Keys.X);
+            KeyBoardSystem.AddKeyToAction(ref k, "up", Keys.C);
+            KeyBoardSystem.AddKeyToAction(ref k, "quit", Keys.Escape);
+
+            SceneManager.Instance.AddEntityToSceneOnLayer("Game", 0, keyboardControl);
+        }
+
+        private void InitChopper(ECSEngine engine) {
+            sm.RegisterSystem("Game", new ChopperControlSystem(engine));
 
             Entity chopper = EntityFactory.Instance.NewEntityWithTag("Chopper");
-            ModelComponent cm = new ModelComponent(engine.LoadContent<Model>("Chopper"), true);
-            cm.AddMeshTransform(1, Matrix.CreateRotationY(0.2f));
-            cm.AddMeshTransform(3, Matrix.CreateRotationY(0.5f));
-            ComponentManager.Instance.AddComponentToEntity(chopper, cm);
+            ModelComponent modelComp = new ModelComponent(engine.LoadContent<Model>("Chopper"), true);
+            ModelRenderSystem.AddMeshTransform(ref modelComp, 1, Matrix.CreateRotationY(0.2f));
+            ModelRenderSystem.AddMeshTransform(ref modelComp, 3, Matrix.CreateRotationY(0.5f));
+            ComponentManager.Instance.AddComponentToEntity(chopper, modelComp);
+
             TransformComponent chopperTransform = new TransformComponent();
             chopperTransform.position = new Vector3(0.0f, 0.0f, 0.0f);
-            chopperTransform.vRotation = new Vector3(0,0,0);
+            chopperTransform.vRotation = new Vector3(0, 0, 0);
             chopperTransform.scale = new Vector3(2.5f, 2.5f, 2.5f);
             ComponentManager.Instance.AddComponentToEntity(chopper, chopperTransform);
 
-            Entity Camera = EntityFactory.Instance.NewEntityWithTag("3DCamera");
+            SceneManager.Instance.AddEntityToSceneOnLayer("Game", 3, chopper);
+        }
+
+        private void InitCamera(ECSEngine engine) {
+            sm.RegisterSystem("Game", new CameraSystem());
+
+            Entity camera = EntityFactory.Instance.NewEntityWithTag("3DCamera");
             CameraComponent cc = new CameraComponent(engine.GetGraphicsDeviceManager());
             cc.position = new Vector3(0, 20, 60);
-            
-            //Use this line instead to see the back rotor rotate, hard to see from behind :)
-            //cc.SetChaseCameraPosition(new Vector3(10f, 20f, 40f));
-            cc.SetChaseCameraPosition(new Vector3(0f, 30f, 70f));
-                        
-            ComponentManager.Instance.AddComponentToEntity(Camera, cc);
-            ComponentManager.Instance.AddComponentToEntity(Camera, new TransformComponent());
-            cc.SetTargetEntity("Chopper");
 
-            Entity Terrain = EntityFactory.Instance.NewEntityWithTag("Terrain");
-            TerrainMapComponent t = new TerrainMapComponent(engine.GetGraphicsDevice(), engine.LoadContent<Texture2D>("Canyon"), engine.LoadContent<Texture2D>("grasstile"),10);
+            //Use this line instead to see the back rotor rotate, hard to see from behind :)
+            //cc.camChasePosition = new Vector3(10f, 20f, 40f);
+            cc.camChasePosition = new Vector3(0f, 30f, 70f);
+
+            ComponentManager.Instance.AddComponentToEntity(camera, cc);
+            ComponentManager.Instance.AddComponentToEntity(camera, new TransformComponent());
+            CameraSystem.SetTargetEntity("Chopper");
+
+            SceneManager.Instance.AddEntityToSceneOnLayer("Game", 6, camera);
+        }
+
+        private void InitTerrain(ECSEngine engine) {
+            sm.RegisterSystem("Game", new TerrainMapRenderSystem());
+
+            Texture2D terrainTex = engine.LoadContent<Texture2D>("Canyon");
+            Texture2D defaultTex = engine.LoadContent<Texture2D>("grasstile");
+
+            Entity terrain = EntityFactory.Instance.NewEntityWithTag("Terrain");
+            TerrainMapComponent t = new TerrainMapComponent(engine.GetGraphicsDevice(), terrainTex, defaultTex, 10);
             TransformComponent tf = new TransformComponent();
+
+            TerrainMapRenderSystem.LoadHighmap(ref t, terrainTex, defaultTex, engine.GetGraphicsDevice());
+
             t.SetTextureToChunk(0, engine.LoadContent<Texture2D>("LTCornerroad"));
             t.SetTextureToChunk(1, engine.LoadContent<Texture2D>("verticalroad"));
             t.SetTextureToChunk(2, engine.LoadContent<Texture2D>("verticalroad"));
@@ -100,18 +128,12 @@ namespace NAJ_Lab2.Init
             t.SetTextureToChunk(92, engine.LoadContent<Texture2D>("verticalroad"));
             t.SetTextureToChunk(91, engine.LoadContent<Texture2D>("verticalroad"));
 
-
             tf.world = Matrix.CreateTranslation(0, 0, 0);
             tf.position = Vector3.Zero;
-            ComponentManager.Instance.AddComponentToEntity(Terrain, t);
-            ComponentManager.Instance.AddComponentToEntity(Terrain, tf);
+            ComponentManager.Instance.AddComponentToEntity(terrain, t);
+            ComponentManager.Instance.AddComponentToEntity(terrain, tf);
 
-            SceneManager.Instance.AddEntityToSceneOnLayer("Game",6, Camera);
-            SceneManager.Instance.AddEntityToSceneOnLayer("Game",3, chopper);
-            SceneManager.Instance.AddEntityToSceneOnLayer("Game",2, Terrain);
-            SceneManager.Instance.SetActiveScene("Game");
-            SceneManager.Instance.AddEntityToSceneOnLayer("Game", 0, keyboardControl);
-            SystemManager.Instance.Category = "Game";
+            SceneManager.Instance.AddEntityToSceneOnLayer("Game", 2, terrain);
         }
     }
 }

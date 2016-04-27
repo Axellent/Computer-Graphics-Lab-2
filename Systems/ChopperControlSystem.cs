@@ -27,14 +27,15 @@ namespace NAJ_Lab2
             Entity terrain = ComponentManager.Instance.GetEntityWithTag("Terrain", sceneEntities);
             TerrainMapComponent tcomp = ComponentManager.Instance.GetEntityComponent<TerrainMapComponent>(terrain);
            
-            engine.SetWindowTitle("Chopper x:" + t.position.X + "Chopper y:" + t.position.Y + "Chopper z:" +t.position.Z + "Map height:" + tcomp.GetTerrainHeight(t.position.X, Math.Abs(t.position.Z)));
+            engine.SetWindowTitle("Chopper x:" + t.position.X + "Chopper y:" + t.position.Y + "Chopper z:" +t.position.Z + "Map height:" +
+                TerrainMapRenderSystem.GetTerrainHeight(tcomp, t.position.X, Math.Abs(t.position.Z)));
 
             //lås modellen till heightmap höjd
-            t.position = new Vector3(t.position.X, 1.7f+tcomp.GetTerrainHeight(t.position.X, Math.Abs(t.position.Z)), t.position.Z);
+            t.position = new Vector3(t.position.X, 1.7f + TerrainMapRenderSystem.GetTerrainHeight(tcomp, t.position.X, Math.Abs(t.position.Z)), t.position.Z);
 
             //set the mesh transforms to zero
-            chopModel.SetMeshTransform(1, Matrix.CreateRotationY(0.0f));
-            chopModel.SetMeshTransform(3, Matrix.CreateRotationY(0.0f));
+            ModelRenderSystem.SetMeshTransform(ref chopModel, 1, Matrix.CreateRotationY(0.0f));
+            ModelRenderSystem.SetMeshTransform(ref chopModel, 3, Matrix.CreateRotationY(0.0f));
 
             Entity kb = ComponentManager.Instance.GetEntityWithTag("keyboard", sceneEntities);
             if (kb != null)
@@ -90,8 +91,8 @@ namespace NAJ_Lab2
 
                     if(moving == true)
                     {
-                        chopModel.SetMeshTransform(1, Matrix.CreateRotationY(0.08f));
-                        chopModel.SetMeshTransform(3, Matrix.CreateRotationY(0.1f));
+                        ModelRenderSystem.SetMeshTransform(ref chopModel, 1, Matrix.CreateRotationY(0.08f));
+                        ModelRenderSystem.SetMeshTransform(ref chopModel, 3, Matrix.CreateRotationY(0.1f));
                     }
                 }
             }

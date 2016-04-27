@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/RTCornerroad.png</SourceFile>
-  <SourceTime>2016-04-27T10:34:29.6133728+02:00</SourceTime>
-  <DestFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/bin/Windows/RTCornerroad.xnb</DestFile>
-  <DestTime>2016-04-27T10:36:05.0148294+02:00</DestTime>
+  <SourceFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/basichouse_texture1.png</SourceFile>
+  <SourceTime>2016-04-27T10:34:29.617373+02:00</SourceTime>
+  <DestFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/bin/Windows/basichouse_texture1.xnb</DestFile>
+  <DestTime>2016-04-27T10:36:05.1518373+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

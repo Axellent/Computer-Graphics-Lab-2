@@ -60,7 +60,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameEngine\GameEngine.csproj">
+    <ProjectReference Include="..\HB-ECS-Engine\GameEngine.csproj">
       <Project>{538b6139-9ac8-4119-8464-c6fb08ab52cc}</Project>
       <Name>GameEngine</Name>
     </ProjectReference>

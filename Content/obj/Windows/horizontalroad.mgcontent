@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/DatorGrafik/Lab2/Content/horizontalroad.png</SourceFile>
-  <SourceTime>2016-04-25T11:07:20.6942392+02:00</SourceTime>
-  <DestFile>C:/DatorGrafik/Lab2/Content/bin/Windows/horizontalroad.xnb</DestFile>
-  <DestTime>2016-04-25T11:13:59.0400233+02:00</DestTime>
+  <SourceFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/horizontalroad.png</SourceFile>
+  <SourceTime>2016-04-27T10:34:29.7693817+02:00</SourceTime>
+  <DestFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/bin/Windows/horizontalroad.xnb</DestFile>
+  <DestTime>2016-04-27T10:36:05.0168295+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

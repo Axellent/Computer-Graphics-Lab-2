@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/DatorGrafik/Lab2/Content/RBCornerroad.png</SourceFile>
-  <SourceTime>2016-04-25T11:07:20.5472308+02:00</SourceTime>
-  <DestFile>C:/DatorGrafik/Lab2/Content/bin/Windows/RBCornerroad.xnb</DestFile>
-  <DestTime>2016-04-25T11:13:59.0330229+02:00</DestTime>
+  <SourceFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/RBCornerroad.png</SourceFile>
+  <SourceTime>2016-04-27T10:34:29.6133728+02:00</SourceTime>
+  <DestFile>C:/Users/Axel/Documents/Visual Studio 2015/Projects/Lab2/Computer-Graphics-Lab-2/Content/bin/Windows/RBCornerroad.xnb</DestFile>
+  <DestTime>2016-04-27T10:36:05.0098291+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2016-03-30T08:36:08+02:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
